@@ -84,9 +84,11 @@ df2 <- getWeatherForDate('SYD',
 df2$Wind_SpeedKm_h <- as.numeric(as.character(df2$Wind_SpeedKm_h))
 
 # Forecast Rain Level using Regression Model
-predict(fit, newdata = data.frame(TemperatureC=df2$TemperatureC,
+dfp <- predict(fit, newdata = data.frame(TemperatureC=df2$TemperatureC,
                                    Sea_Level_PressurehPa=df2$Sea_Level_PressurehPa,
                                    Humidity=df2$Humidity,
                                    Wind_SpeedKm_h=df2$Wind_SpeedKm_h,
                                    Dew_PointC=df2$Dew_PointC))
+plot(dfp, xlab="Time series", ylab="Rain level", main="Forecast rain",  pch=1, col="blue")
+
 
